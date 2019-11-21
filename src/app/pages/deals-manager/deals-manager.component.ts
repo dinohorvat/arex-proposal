@@ -5,14 +5,14 @@ import { DealModel } from '../../models/deal.model';
 @Component({
   selector: 'app-deals-manager',
   templateUrl: './deals-manager.component.html',
-  styleUrls: ['./deals-manager.component.css']
+  styleUrls: ['./deals-manager.component.scss']
 })
 export class DealsManagerComponent implements OnInit {
 
   deals: DealModel[];
   totalDeals: number;
   columnDefinition = [
-    { field: 'name', header: 'Name' },
+    { field: 'name', header: 'Name', type: true },
     { field: 'address', header: 'Address' },
     { field: 'price', header: 'Price', sortable: true },
     { field: 'type', header: 'Type', sortable: true },

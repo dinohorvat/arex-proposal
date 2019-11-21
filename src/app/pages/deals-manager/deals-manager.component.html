@@ -14,8 +14,13 @@
         <tr>
             <td *ngFor="let col of columns">
                 {{rowData[col.field]}}
+
+                <ng-container *ngIf="col.header === 'Address'">
+                    <a [href]="'https://www.google.com/maps/place/' + rowData[col.field]" target="_blank">
+                        <i class="icon-location-pin"></i>
+                    </a>
+                </ng-container>
             </td>
         </tr>
     </ng-template>
 </p-table>
-<i class="icon-location-pin"></i>
