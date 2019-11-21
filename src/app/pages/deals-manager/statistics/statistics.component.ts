@@ -1,15 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { DialogService } from 'primeng/api';
+import { FavoritesModalComponent } from '../favorites-modal/favorites-modal.component';
 
 @Component({
   selector: 'app-deals-manager-statistics',
   templateUrl: './statistics.component.html',
   styleUrls: ['./statistics.component.scss']
 })
-export class DealsManagerStatisticsComponent implements OnInit {
+export class DealsManagerStatisticsComponent {
+  @Input() totalDeals: number;
+  constructor(private dialogService: DialogService) { }
 
-  constructor() { }
-
-  ngOnInit() {
+  showFavorites() {
+    this.dialogService.open(FavoritesModalComponent, {
+      header: 'Choose a Car',
+      width: '70%'
+    });
   }
 
 }

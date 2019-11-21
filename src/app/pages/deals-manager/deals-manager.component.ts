@@ -10,7 +10,7 @@ import { DialogService } from 'primeng/api';
 })
 export class DealsManagerComponent implements OnInit {
 
-  deals: DealModel[];
+  deals: DealModel[] = [];
 
   constructor(private dealsManagerService: DealsManagerService, private dialogService: DialogService) { }
 
