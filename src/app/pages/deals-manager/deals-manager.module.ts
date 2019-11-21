@@ -5,6 +5,7 @@ import { AccordionModule, ModalModule, TabsModule } from 'ngx-bootstrap';
 import { ChartsModule } from 'ng2-charts';
 import { CustomerRoutingModule } from './deals-manager-routing.module';
 import { DealsManagerComponent } from './deals-manager.component';
+import { TableModule } from 'primeng/table';
 
 @NgModule({
     imports: [
@@ -16,6 +17,7 @@ import { DealsManagerComponent } from './deals-manager.component';
         ModalModule.forRoot(),
         TabsModule,
         AccordionModule,
+        TableModule
     ],
     declarations: [
         DealsManagerComponent,

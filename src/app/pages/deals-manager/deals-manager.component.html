@@ -1,1 +1,20 @@
-<p>deals-manager works!</p>
+<p-table [value]="deals">
+    <ng-template pTemplate="header">
+        <tr>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Price</th>
+            <th>Type</th>
+            <th>Due Date</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-deal>
+        <tr>
+            <td>{{deal.name}}</td>
+            <td>{{deal.address}}</td>
+            <td>{{deal.price}}</td>
+            <td>{{deal.type}}</td>
+            <td>{{deal.dueDate}}</td>
+        </tr>
+    </ng-template>
+</p-table>
