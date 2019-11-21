@@ -34,6 +34,9 @@ import { DialogService } from 'primeng/api';
         DealsManagerStatisticsComponent,
         DealsManagerTableComponent,
     ],
+    entryComponents: [
+        FavoritesModalComponent
+    ],
     providers: [
         DialogService
     ]
