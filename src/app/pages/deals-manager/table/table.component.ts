@@ -13,7 +13,8 @@ export class DealsManagerTableComponent implements OnInit {
     { field: 'address', header: 'Address' },
     { field: 'price', header: 'Price', sortable: true },
     { field: 'type', header: 'Type', sortable: true, className: 'type' },
-    { field: 'dueDate', header: 'Due Date', sortable: true }
+    { field: 'dueDate', header: 'Due Date', sortable: true },
+    { header: '' }
   ];
   constructor() { }
 

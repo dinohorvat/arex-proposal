@@ -13,8 +13,8 @@ export class DealsManagerStatisticsComponent {
 
   showFavorites() {
     this.dialogService.open(FavoritesModalComponent, {
-      header: 'Choose a Car',
-      width: '70%'
+      header: 'Favorites',
+      width: '50%'
     });
   }
 
