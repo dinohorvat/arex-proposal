@@ -10,6 +10,13 @@ import { DealModel } from '../../models/deal.model';
 export class DealsManagerComponent implements OnInit {
 
   deals: DealModel[];
+  columnDefinition = [
+    { field: 'name', header: 'Name' },
+    { field: 'address', header: 'Address' },
+    { field: 'price', header: 'Price', sortable: true },
+    { field: 'type', header: 'Type', sortable: true },
+    { field: 'dueDate', header: 'Due Date', sortable: true }
+  ];
   constructor(private dealsManagerService: DealsManagerService) { }
 
   ngOnInit() {
