@@ -1,6 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { DialogService } from 'primeng/api';
 import { FavoritesModalComponent } from '../favorites-modal/favorites-modal.component';
+import { DealModel } from '../../../models/deal.model';
 
 @Component({
   selector: 'app-deals-manager-statistics',
@@ -8,12 +9,13 @@ import { FavoritesModalComponent } from '../favorites-modal/favorites-modal.comp
   styleUrls: ['./statistics.component.scss']
 })
 export class DealsManagerStatisticsComponent {
-  @Input() totalDeals: number;
+  @Input() deals: DealModel[];
   constructor(private dialogService: DialogService) { }
 
   showFavorites() {
     this.dialogService.open(FavoritesModalComponent, {
       header: 'Favorites',
+      data: this.deals,
       width: '50%'
     });
   }
