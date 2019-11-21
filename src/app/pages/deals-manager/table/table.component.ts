@@ -20,8 +20,12 @@ export class DealsManagerTableComponent {
   constructor(private dealsManagerService: DealsManagerService) { }
 
   toggleFavorite(deal: DealModel) {
-    console.log(deal);
-    this.dealsManagerService.setFavorite(deal);
+    deal.favorite = !deal.favorite;
+    if (deal.favorite) {
+      this.dealsManagerService.setFavorite(deal);
+    } else {
+      this.dealsManagerService.removeFavorite(deal.id);
+    }
   }
 
 }
