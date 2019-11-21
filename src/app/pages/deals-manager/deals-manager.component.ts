@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DealsManagerService } from '../../services/deals-manager.service';
 import { DealModel } from '../../models/deal.model';
+import { DialogService } from 'primeng/api';
 
 @Component({
   selector: 'app-deals-manager',
@@ -10,15 +11,8 @@ import { DealModel } from '../../models/deal.model';
 export class DealsManagerComponent implements OnInit {
 
   deals: DealModel[];
-  totalDeals: number;
-  columnDefinition = [
-    { field: 'name', header: 'Name', type: true },
-    { field: 'address', header: 'Address' },
-    { field: 'price', header: 'Price', sortable: true },
-    { field: 'type', header: 'Type', sortable: true, className: 'type' },
-    { field: 'dueDate', header: 'Due Date', sortable: true }
-  ];
-  constructor(private dealsManagerService: DealsManagerService) { }
+
+  constructor(private dealsManagerService: DealsManagerService, private dialogService: DialogService) { }
 
   ngOnInit() {
     this.getDeals();
@@ -27,8 +21,11 @@ export class DealsManagerComponent implements OnInit {
   getDeals() {
     this.dealsManagerService.fetchDeals().subscribe((res) => {
       this.deals = res;
-      this.totalDeals = res.length;
     });
+  }
+
+  showFavorites() {
+
   }
 
 }

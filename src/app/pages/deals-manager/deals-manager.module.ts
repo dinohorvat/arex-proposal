@@ -7,6 +7,11 @@ import { CustomerRoutingModule } from './deals-manager-routing.module';
 import { DealsManagerComponent } from './deals-manager.component';
 import { TableModule } from 'primeng/table';
 import { TooltipModule } from 'primeng/tooltip';
+import { FavoritesModalComponent } from './favorites-modal/favorites-modal.component';
+import { DynamicDialogModule } from 'primeng/dynamicdialog';
+import { DealsManagerStatisticsComponent } from './statistics/statistics.component';
+import { DealsManagerTableComponent } from './table/table.component';
+import { DialogService } from 'primeng/api';
 
 @NgModule({
     imports: [
@@ -19,12 +24,18 @@ import { TooltipModule } from 'primeng/tooltip';
         TabsModule,
         AccordionModule,
         TableModule,
-        TooltipModule
+        TooltipModule,
+        DynamicDialogModule
     ],
     declarations: [
         DealsManagerComponent,
+        FavoritesModalComponent,
+        DealsManagerStatisticsComponent,
+        DealsManagerTableComponent,
     ],
-    providers: []
+    providers: [
+        DialogService
+    ]
 })
 export class DealsManagerModule {
 }
