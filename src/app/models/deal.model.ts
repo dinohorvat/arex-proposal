@@ -5,4 +5,5 @@ export interface DealModel {
     price: string;
     type: string;
     dueDate: string;
+    favorite?: boolean;
 }

@@ -1,12 +1,13 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { DealModel } from '../../../models/deal.model';
+import { DealsManagerService } from '../../../services/deals-manager.service';
 
 @Component({
   selector: 'app-deals-manager-table',
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.scss']
 })
-export class DealsManagerTableComponent implements OnInit {
+export class DealsManagerTableComponent {
   @Input() deals: DealModel[];
   columnDefinition = [
     { field: 'name', header: 'Name', width: '30%' },
@@ -16,9 +17,11 @@ export class DealsManagerTableComponent implements OnInit {
     { field: 'dueDate', header: 'Due Date', sortable: true, width: '10%' },
     { header: '', type: 'favorites', width: '5%', className: 'favorites' }
   ];
-  constructor() { }
+  constructor(private dealsManagerService: DealsManagerService) { }
 
-  ngOnInit() {
+  toggleFavorite(deal: DealModel) {
+    console.log(deal);
+    this.dealsManagerService.setFavorite(deal);
   }
 
 }

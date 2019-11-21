@@ -24,6 +24,7 @@ export class DealsManagerComponent implements OnInit {
     });
   }
 
+
   showFavorites() {
 
   }

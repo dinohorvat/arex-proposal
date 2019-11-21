@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { DealModel } from '../models/deal.model';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,15 @@ export class DealsManagerService {
   constructor(private http: HttpClient) {}
 
   fetchDeals(): Observable<DealModel[]> {
-      return this.http.get<DealModel[]>(this.jsonUrl);
+    const favorites = this.fetchFavorites();
+    return this.http.get<DealModel[]>(this.jsonUrl).pipe(map((deals) => {
+        deals.forEach((deal) => {
+          if (favorites.some((favorite) => deal.id === favorite.id)) {
+            deal.favorite = true;
+          }
+        });
+        return deals;
+      }));
   }
 
   fetchFavorites(): DealModel[] {

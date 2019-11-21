@@ -27,7 +27,7 @@
                          [src]="'../../../assets/images/' + rowData[col.field] + '.svg'"
                          class="type-image"/>
                     <ng-container *ngSwitchCase="'favorites'">
-                        <i class="icon-star"></i>
+                        <i [ngClass]="rowData['favorite']? 'isFavorite' : ''" (click)="toggleFavorite(rowData)" class="icon-star"></i>
                     </ng-container>
                     <ng-container *ngSwitchDefault>
                         {{rowData[col.field] | titlecase}}
