@@ -2,10 +2,18 @@
   float: right;
 }
 
+.icon-star {
+  cursor: pointer;
+  font-size: 23px;
+}
+
 .type-image {
   width: 70px;
 }
 
-td.type {
-  text-align: center;
+td {
+  &.type, &.favorites {
+    text-align: center;
+  }
 }
+

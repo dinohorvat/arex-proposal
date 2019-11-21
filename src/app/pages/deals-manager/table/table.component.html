@@ -1,6 +1,7 @@
 <p-table [columns]="columnDefinition"
          [value]="deals"
          [rows]="5"
+         [autoLayout]="true"
          [paginator]="true">
     <ng-template pTemplate="header" let-columns>
         <tr>
@@ -12,19 +13,22 @@
     </ng-template>
     <ng-template pTemplate="body" let-rowData let-columns="columns">
         <tr>
-            <td [className]="col.className" *ngFor="let col of columns">
-                <ng-container [ngSwitch]="col.header">
-                    <ng-container *ngSwitchCase="'Address'">
+            <td [attr.class]="col.className" *ngFor="let col of columns">
+                <ng-container [ngSwitch]="col.type">
+                    <ng-container *ngSwitchCase="'address'">
                         {{rowData[col.field] | titlecase}}
                         <a [href]="'https://www.google.com/maps/place/' + rowData[col.field]" target="_blank">
                             <i class="icon-location-pin"></i>
                         </a>
                     </ng-container>
 
-                    <img *ngSwitchCase="'Type'"
+                    <img *ngSwitchCase="'type'"
                          [pTooltip]="rowData[col.field] | titlecase"
                          [src]="'../../../assets/images/' + rowData[col.field] + '.svg'"
                          class="type-image"/>
+                    <ng-container *ngSwitchCase="'favorites'">
+                        <i class="icon-star"></i>
+                    </ng-container>
                     <ng-container *ngSwitchDefault>
                         {{rowData[col.field] | titlecase}}
                     </ng-container>
