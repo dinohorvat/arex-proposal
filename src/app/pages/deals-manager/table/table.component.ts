@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { DealModel } from '../../../models/deal.model';
 import { DealsManagerService } from '../../../services/deals-manager.service';
+import { Table } from 'primeng/table';
 
 @Component({
   selector: 'app-deals-manager-table',
@@ -10,6 +11,7 @@ import { DealsManagerService } from '../../../services/deals-manager.service';
 export class DealsManagerTableComponent {
   @Input() deals: DealModel[];
   @Input() columnDefinition;
+  @Input() isModal = false;
 
   constructor(private dealsManagerService: DealsManagerService) { }
 
@@ -20,6 +22,15 @@ export class DealsManagerTableComponent {
     } else {
       this.dealsManagerService.removeFavorite(deal.id);
     }
+  }
+
+  searchFilter(table: Table, { value }: any) {
+    if (!this.isModal) {
+      table.globalFilterFields = ['name', 'address', 'price', 'type', 'dueDate'];
+    } else {
+      table.globalFilterFields = ['name', 'type'];
+    }
+    table.filterGlobal(value, 'contains');
   }
 
 }

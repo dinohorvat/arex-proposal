@@ -12,6 +12,7 @@ import { DynamicDialogModule } from 'primeng/dynamicdialog';
 import { DealsManagerStatisticsComponent } from './statistics/statistics.component';
 import { DealsManagerTableComponent } from './table/table.component';
 import { DialogService } from 'primeng/api';
+import { InputTextModule } from 'primeng/inputtext';
 
 @NgModule({
     imports: [
@@ -26,7 +27,8 @@ import { DialogService } from 'primeng/api';
         TableModule,
         TooltipModule,
         DynamicDialogModule,
-        BsDropdownModule
+        BsDropdownModule,
+        InputTextModule
     ],
     declarations: [
         DealsManagerComponent,
