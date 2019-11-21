@@ -42,11 +42,14 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ChartsModule } from 'ng2-charts';
 import { DealsManagerComponent } from './pages/deals-manager/deals-manager.component';
 import { DealsManagerModule } from './pages/deals-manager/deals-manager.module';
+import { DealsManagerService } from './services/deals-manager.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     AppRoutingModule,
     AppAsideModule,
     AppBreadcrumbModule.forRoot(),
@@ -67,10 +70,14 @@ import { DealsManagerModule } from './pages/deals-manager/deals-manager.module';
     LoginComponent,
     RegisterComponent
   ],
-  providers: [{
+  providers: [
+      {
     provide: LocationStrategy,
     useClass: HashLocationStrategy
-  }],
+  },
+      DealsManagerService,
+
+  ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }
