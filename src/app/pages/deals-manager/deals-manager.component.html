@@ -1,4 +1,7 @@
-<p-table [columns]="columnDefinition" [value]="deals">
+<p-table [columns]="columnDefinition"
+         [value]="deals"
+         [rows]="5"
+         [paginator]="true">
     <ng-template pTemplate="header" let-columns>
         <tr>
             <th *ngFor="let col of columns" [pSortableColumn]="col.field">

@@ -10,6 +10,7 @@ import { DealModel } from '../../models/deal.model';
 export class DealsManagerComponent implements OnInit {
 
   deals: DealModel[];
+  totalDeals: number;
   columnDefinition = [
     { field: 'name', header: 'Name' },
     { field: 'address', header: 'Address' },
@@ -26,6 +27,7 @@ export class DealsManagerComponent implements OnInit {
   getDeals() {
     this.dealsManagerService.fetchDeals().subscribe((res) => {
       this.deals = res;
+      this.totalDeals = res.length;
     });
   }
 
