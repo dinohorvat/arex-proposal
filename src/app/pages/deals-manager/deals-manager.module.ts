@@ -6,6 +6,7 @@ import { ChartsModule } from 'ng2-charts';
 import { CustomerRoutingModule } from './deals-manager-routing.module';
 import { DealsManagerComponent } from './deals-manager.component';
 import { TableModule } from 'primeng/table';
+import { TooltipModule } from 'primeng/tooltip';
 
 @NgModule({
     imports: [
@@ -17,7 +18,8 @@ import { TableModule } from 'primeng/table';
         ModalModule.forRoot(),
         TabsModule,
         AccordionModule,
-        TableModule
+        TableModule,
+        TooltipModule
     ],
     declarations: [
         DealsManagerComponent,

@@ -12,13 +12,22 @@
     </ng-template>
     <ng-template pTemplate="body" let-rowData let-columns="columns">
         <tr>
-            <td *ngFor="let col of columns">
-                {{rowData[col.field]}}
+            <td [className]="col.className" *ngFor="let col of columns">
+                <ng-container [ngSwitch]="col.header">
+                    <ng-container *ngSwitchCase="'Address'">
+                        {{rowData[col.field] | titlecase}}
+                        <a [href]="'https://www.google.com/maps/place/' + rowData[col.field]" target="_blank">
+                            <i class="icon-location-pin"></i>
+                        </a>
+                    </ng-container>
 
-                <ng-container *ngIf="col.header === 'Address'">
-                    <a [href]="'https://www.google.com/maps/place/' + rowData[col.field]" target="_blank">
-                        <i class="icon-location-pin"></i>
-                    </a>
+                    <img *ngSwitchCase="'Type'"
+                         [pTooltip]="rowData[col.field] | titlecase"
+                         [src]="'../../../assets/images/' + rowData[col.field] + '.svg'"
+                         class="type-image"/>
+                    <ng-container *ngSwitchDefault>
+                        {{rowData[col.field] | titlecase}}
+                    </ng-container>
                 </ng-container>
             </td>
         </tr>

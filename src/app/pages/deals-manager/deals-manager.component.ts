@@ -15,7 +15,7 @@ export class DealsManagerComponent implements OnInit {
     { field: 'name', header: 'Name', type: true },
     { field: 'address', header: 'Address' },
     { field: 'price', header: 'Price', sortable: true },
-    { field: 'type', header: 'Type', sortable: true },
+    { field: 'type', header: 'Type', sortable: true, className: 'type' },
     { field: 'dueDate', header: 'Due Date', sortable: true }
   ];
   constructor(private dealsManagerService: DealsManagerService) { }
