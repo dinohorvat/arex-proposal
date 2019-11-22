@@ -9,7 +9,17 @@ import { DealModel } from '../../../models/deal.model';
   styleUrls: ['./statistics.component.scss']
 })
 export class DealsManagerStatisticsComponent {
-  @Input() deals: DealModel[];
+  @Input() set deals(deals: DealModel[]) {
+    this._deals = deals;
+    this.favoritesNumber = deals.filter((deal) => deal.favorite).length;
+  }
+
+  get deals() {
+    return this._deals;
+  }
+  private _deals;
+
+  public favoritesNumber: number;
   constructor(private dialogService: DialogService) { }
 
   showFavorites() {

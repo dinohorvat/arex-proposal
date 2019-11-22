@@ -1,14 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { DealsManagerService } from '../../services/deals-manager.service';
 import { DealModel } from '../../models/deal.model';
-import { DialogService } from 'primeng/api';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-deals-manager',
   templateUrl: './deals-manager.component.html',
   styleUrls: ['./deals-manager.component.scss']
 })
-export class DealsManagerComponent implements OnInit {
+export class DealsManagerComponent implements OnInit, OnDestroy {
+  private favoritesChangeSubscription: Subscription;
   columnDefinition = [
     { field: 'name', header: 'Name', width: '30%' },
     { field: 'address', header: 'Address', type: 'address', width: '30%' },
@@ -19,10 +20,13 @@ export class DealsManagerComponent implements OnInit {
   ];
   deals: DealModel[] = [];
 
-  constructor(private dealsManagerService: DealsManagerService, private dialogService: DialogService) { }
+  constructor(private dealsManagerService: DealsManagerService) { }
 
   ngOnInit() {
     this.getDeals();
+    this.favoritesChangeSubscription = this.dealsManagerService.$favoritesChangeEmitter.subscribe((res) => {
+      this.deals = res;
+    });
   }
 
   getDeals() {
@@ -31,9 +35,10 @@ export class DealsManagerComponent implements OnInit {
     });
   }
 
-
-  showFavorites() {
-
+  ngOnDestroy(): void {
+    if (this.favoritesChangeSubscription) {
+      this.favoritesChangeSubscription.unsubscribe();
+    }
   }
 
 }

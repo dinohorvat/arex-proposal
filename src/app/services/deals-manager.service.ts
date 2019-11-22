@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { DealModel } from '../models/deal.model';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Storage } from '../enums/arex.enum';
 
@@ -9,6 +9,7 @@ import { Storage } from '../enums/arex.enum';
   providedIn: 'root'
 })
 export class DealsManagerService {
+  public $favoritesChangeEmitter: Subject<DealModel[]> = new Subject();
   private jsonUrl = 'assets/deals.json';
 
   constructor(private http: HttpClient) {}

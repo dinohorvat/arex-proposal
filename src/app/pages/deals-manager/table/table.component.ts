@@ -22,6 +22,8 @@ export class DealsManagerTableComponent {
     } else {
       this.dealsManagerService.removeFavorite(deal.id);
     }
+    this.deals = [...this.deals];
+    this.dealsManagerService.$favoritesChangeEmitter.next(this.deals);
   }
 
   searchFilter(table: Table, { value }: any) {
