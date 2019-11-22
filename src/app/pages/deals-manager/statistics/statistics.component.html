@@ -27,7 +27,8 @@
                     <div class="h4 m-0">{{ favoritesNumber }}</div>
                     <div>Favorite Deals</div>
                     <div class="progress progress-xs my-3">
-                        <div class="progress-bar bg-success" role="progressbar" style="width: 100%"></div>
+                        <div class="progress-bar bg-success" role="progressbar"
+                             [ngStyle]="{'width': (favoritesNumber / deals.length) * 100 + '%'}"></div>
                     </div>
                     <small class="text-muted">Number of favorite deals</small>
                 </div>
