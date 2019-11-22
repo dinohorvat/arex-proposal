@@ -1,3 +1,5 @@
+![App Img](link-to-image)
+
 ## Installation
 
 ### Dependencies
