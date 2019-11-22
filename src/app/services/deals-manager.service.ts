@@ -19,8 +19,10 @@ export class DealsManagerService {
     const favorites = this.fetchFavorites();
     return this.http.get<DealModel[]>(this.jsonUrl).pipe(map((deals) => {
         deals.forEach((deal) => {
-          if (favorites.some((favorite) => deal.id === favorite.id)) {
-            deal.favorite = true;
+          if (favorites) {
+            if (favorites.some((favorite) => deal.id === favorite.id)) {
+              deal.favorite = true;
+            }
           }
         });
         return deals;

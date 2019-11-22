@@ -1,46 +1,49 @@
-<p-table [columns]="columnDefinition"
-         #dt
-         [value]="deals"
-         [rows]="5"
-         [autoLayout]="true"
-         [paginator]="true">
-    <ng-template pTemplate="caption">
-        <div style="text-align: right">
-            <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
-            <input type="text" pInputText size="50" placeholder="Search" (input)="searchFilter(dt, $event.target)" style="width:auto">
-        </div>
-    </ng-template>
-    <ng-template pTemplate="header" let-columns>
-        <tr>
-            <th *ngFor="let col of columns" [pSortableColumn]="col.field">
-                {{col.header}}
-                <p-sortIcon *ngIf="col.sortable" [field]="col.field"></p-sortIcon>
-            </th>
-        </tr>
-    </ng-template>
-    <ng-template pTemplate="body" let-rowData let-columns="columns">
-        <tr>
-            <td [attr.class]="col.className" *ngFor="let col of columns">
-                <ng-container [ngSwitch]="col.type">
-                    <ng-container *ngSwitchCase="'address'">
-                        {{rowData[col.field] | titlecase}}
-                        <a [href]="'https://www.google.com/maps/place/' + rowData[col.field]" target="_blank">
-                            <i class="icon-location-pin"></i>
-                        </a>
-                    </ng-container>
+<div class="animated fadeIn">
 
-                    <img *ngSwitchCase="'type'"
-                         [pTooltip]="rowData[col.field] | titlecase"
-                         [src]="'../../../assets/images/' + rowData[col.field] + '.svg'"
-                         class="type-image"/>
-                    <ng-container *ngSwitchCase="'favorites'">
-                        <i [ngClass]="rowData['favorite']? 'isFavorite' : ''" (click)="toggleFavorite(rowData)" class="fa fa-star"></i>
+    <p-table [columns]="columnDefinition"
+             #dt
+             [value]="deals"
+             [rows]="5"
+             [autoLayout]="true"
+             [paginator]="true">
+        <ng-template pTemplate="caption">
+            <div style="text-align: right">
+                <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
+                <input type="text" pInputText size="50" placeholder="Search" (input)="searchFilter(dt, $event.target)" style="width:auto">
+            </div>
+        </ng-template>
+        <ng-template pTemplate="header" let-columns>
+            <tr>
+                <th *ngFor="let col of columns" [pSortableColumn]="col.field">
+                    {{col.header}}
+                    <p-sortIcon *ngIf="col.sortable" [field]="col.field"></p-sortIcon>
+                </th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-rowData let-columns="columns">
+            <tr>
+                <td [attr.class]="col.className" *ngFor="let col of columns">
+                    <ng-container [ngSwitch]="col.type">
+                        <ng-container *ngSwitchCase="'address'">
+                            {{rowData[col.field] | titlecase}}
+                            <a [href]="'https://www.google.com/maps/place/' + rowData[col.field]" target="_blank">
+                                <i class="icon-location-pin"></i>
+                            </a>
+                        </ng-container>
+
+                        <img *ngSwitchCase="'type'"
+                             [pTooltip]="rowData[col.field] | titlecase"
+                             [src]="'../../../assets/images/' + rowData[col.field] + '.svg'"
+                             class="type-image"/>
+                        <ng-container *ngSwitchCase="'favorites'">
+                            <i [ngClass]="rowData['favorite']? 'isFavorite' : ''" (click)="toggleFavorite(rowData)" class="fa fa-star"></i>
+                        </ng-container>
+                        <ng-container *ngSwitchDefault>
+                            {{rowData[col.field] | titlecase}}
+                        </ng-container>
                     </ng-container>
-                    <ng-container *ngSwitchDefault>
-                        {{rowData[col.field] | titlecase}}
-                    </ng-container>
-                </ng-container>
-            </td>
-        </tr>
-    </ng-template>
+                </td>
+            </tr>
+        </ng-template>
 </p-table>
+</div>
