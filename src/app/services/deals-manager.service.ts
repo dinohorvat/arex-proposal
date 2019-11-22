@@ -10,6 +10,7 @@ import { Storage } from '../enums/arex.enum';
 })
 export class DealsManagerService {
   public $favoritesChangeEmitter: Subject<DealModel[]> = new Subject();
+  public $actionEmitter: Subject<String> = new Subject();
   private jsonUrl = 'assets/deals.json';
 
   constructor(private http: HttpClient) {}

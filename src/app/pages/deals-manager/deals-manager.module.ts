@@ -11,7 +11,6 @@ import { FavoritesModalComponent } from './favorites-modal/favorites-modal.compo
 import { DynamicDialogModule } from 'primeng/dynamicdialog';
 import { DealsManagerStatisticsComponent } from './statistics/statistics.component';
 import { DealsManagerTableComponent } from './table/table.component';
-import { DialogService } from 'primeng/api';
 import { InputTextModule } from 'primeng/inputtext';
 
 @NgModule({
@@ -40,7 +39,6 @@ import { InputTextModule } from 'primeng/inputtext';
         FavoritesModalComponent
     ],
     providers: [
-        DialogService
     ]
 })
 export class DealsManagerModule {

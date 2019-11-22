@@ -4,12 +4,9 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
-import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
-import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
+import { DialogService } from 'primeng/api';
 
-const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
-  suppressScrollX: true
-};
+
 
 import { AppComponent } from './app.component';
 
@@ -76,6 +73,7 @@ import { HttpClientModule } from '@angular/common/http';
     useClass: HashLocationStrategy
   },
       DealsManagerService,
+      DialogService
 
   ],
   bootstrap: [ AppComponent ]
