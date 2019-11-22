@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { DealsManagerService } from '../../services/deals-manager.service';
 import { DealModel } from '../../models/deal.model';
 import { Subscription } from 'rxjs';
+import { columnTableDefinition } from './columns.definition';
 
 @Component({
   selector: 'app-deals-manager',
@@ -10,14 +11,7 @@ import { Subscription } from 'rxjs';
 })
 export class DealsManagerComponent implements OnInit, OnDestroy {
   private favoritesChangeSubscription: Subscription;
-  columnDefinition = [
-    { field: 'name', header: 'Name', width: '30%' },
-    { field: 'address', header: 'Address', type: 'address', width: '30%' },
-    { field: 'price', header: 'Price', sortable: true, width: '20%' },
-    { field: 'type', header: 'Type', type: 'type', sortable: true, className: 'type', width: '20%' },
-    { field: 'dueDate', header: 'Due Date', sortable: true, width: '10%' },
-    { header: '', type: 'favorites', width: '5%', className: 'favorites' }
-  ];
+  columnDefinition = columnTableDefinition;
   deals: DealModel[] = [];
 
   constructor(private dealsManagerService: DealsManagerService) { }
