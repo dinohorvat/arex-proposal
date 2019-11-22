@@ -1,4 +1,4 @@
-import {Component } from '@angular/core';
+import { Component } from '@angular/core';
 import { navItems } from '../../_nav';
 import { DealsManagerService } from '../../services/deals-manager.service';
 
