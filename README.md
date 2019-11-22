@@ -31,6 +31,11 @@ $ ng build --prod
 * Adding favorites [x]
 * Removing favorites [x]
 
+## Missing features
+Reason for missing features was lack of time. I was sent the project on Thursday, 21.11.2019, and I was not able to start working on it before 9PM. So everything I've built was done in 4 hours.
+* Unit Testing
+
+
 ## Application Structure
 
 ```
