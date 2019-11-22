@@ -1,4 +1,6 @@
-![App Img](link-to-image)
+# Deals Manager
+
+![App Img](https://i.ibb.co/zF787Mc/Screen-Shot-2019-11-22-at-1-48-06-AM.png)
 
 ## Installation
 
