@@ -19,7 +19,13 @@ export class DealsManagerComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.getDeals();
     this.favoritesChangeSubscription = this.dealsManagerService.$favoritesChangeEmitter.subscribe((res) => {
-      this.deals = res;
+      this.deals = this.deals.map((deal) => {
+        const toggledItem = res.find((item) => (deal.id === item.id) && (deal.favorite !== item.favorite));
+        if (toggledItem) {
+          deal.favorite = toggledItem.favorite;
+        }
+        return deal;
+      });
     });
   }
 

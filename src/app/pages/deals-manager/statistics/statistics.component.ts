@@ -35,7 +35,7 @@ export class DealsManagerStatisticsComponent implements OnDestroy {
   showFavorites() {
     this.dialogService.open(FavoritesModalComponent, {
       header: 'Favorites',
-      data: this.deals,
+      data: this.deals.filter((item) => item.favorite),
       width: '50%'
     });
   }
